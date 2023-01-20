@@ -1,26 +1,32 @@
 package com.streetfighter.combat;
 
 public class Arena {
-    private Robot robot1;
-    private Robot robot2;
+    private Robot robot;
+    private Fighter human;
     
-    public Arena(Robot robot1, Robot robot2) {
-        this.robot1 = robot1;
-        this.robot2 = robot2;
+    public Arena(Robot robot, Fighter human) {
+        this.robot = robot;
+        this.human = human;
     }
     
     public void fight(){
-        robot1.fire(robot2);
-        String tireur = robot1.getNomRobot();
+        String tireur;
+        if (human.getNombre() == 1) {
+            human.fire(robot);
+            tireur = human.getNomRobot();
+        } else {
+            robot.fire(human);
+            tireur = robot.getNomRobot();
+        }
         
-        while (robot2.IsDead() == false && robot1.IsDead() == false){
-            if (tireur == robot1.getNomRobot()) {
-                robot2.fire(robot1);
-                tireur = robot2.getNomRobot();
+        while (human.IsDead() == false && robot.IsDead() == false){
+            if (tireur == robot.getNomRobot()) {
+                human.fire(robot);
+                tireur = human.getNomRobot();
             } else {
-                robot1.fire(robot2);
-                tireur = robot1.getNomRobot();
+                robot.fire(human);
+                tireur = robot.getNomRobot();
             }
         }
-    }
+    }   
 }

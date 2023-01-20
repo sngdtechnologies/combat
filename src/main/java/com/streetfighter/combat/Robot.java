@@ -1,8 +1,8 @@
 package com.streetfighter.combat;
 
 public class Robot {
-    private String nomRobot;
-    private int nombrePointDeVie;
+    String nomRobot;
+    int nombrePointDeVie;
 
     public Robot(String nomRobot, int nombrePointDeVie) {
         this.nomRobot = nomRobot;
@@ -24,18 +24,15 @@ public class Robot {
     public void setNombrePointDeVie(int nombrePointDeVie) {
         this.nombrePointDeVie = nombrePointDeVie;
     }
-    
-    
-    
-    public void fire(Robot robot){
-        robot.setNombrePointDeVie(robot.getNombrePointDeVie() - 2);
-        if (robot.getNombrePointDeVie() == 0) {
-            System.out.println("Fin du combat : " + robot.getNomRobot() + " a ete tue par " + nomRobot);
+   
+    public void fire(Fighter fight){
+        fight.setNombrePointDeVie(fight.getNombrePointDeVie() - 2);
+        if (fight.getNombrePointDeVie() == 0) {
+            System.out.println("Fin du combat : " + fight.getNomRobot() + " a ete tue par " + nomRobot);
         } else if (nombrePointDeVie == 0) {
-            System.out.println("Fin du combat : " + nomRobot + " a ete tue par " + robot.getNomRobot());
+            System.out.println("Fin du combat : " + nomRobot + " a ete tue par " + fight.getNomRobot());
         }
     }
-    
     
     public boolean IsDead(){
         if(nombrePointDeVie == 0)
